@@ -1,0 +1,27 @@
+div.container {
+    font-family: 'Raleway', sans-serif;
+}
+
+h1{
+    margin-top: 50px;
+    margin-left: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+div.grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: lemonchiffon;
+}
+
+div.grid-box {
+    width: 30%;
+    background: red;
+    height: 110px;
+    border-radius: 5px;
+    margin: 25px 5px;;
+}
+
