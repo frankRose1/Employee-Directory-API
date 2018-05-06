@@ -1,6 +1,6 @@
 body {
     font-family: 'Raleway', sans-serif;
-     background-color: lemonchiffon;
+     background-color: #fcfcfc;
 }
 
 h1{
@@ -10,6 +10,8 @@ h1{
     font-weight: bold;
 }
 
+
+/*GRID START*/
 div.grid {
     display: flex;
     justify-content: space-around;
@@ -24,9 +26,16 @@ div.grid-box {
     border-radius: 5px;
     margin: 25px 5px;
     padding: 15px;
-    border: .5px solid lightgray;
+    border: .5px solid #dfdfdf;
     display: flex;
     justify-content: space-around;
+    transition: 0.5s;
+    overflow: auto;
+    cursor: pointer;
+}
+
+div.grid-box:hover {
+    background-color: rgba(155, 214, 242, 0.5);
 }
 
 div.grid-box img.api-img {
@@ -59,4 +68,101 @@ div.employee-info p.email {
 
 div.employee-info p.location {
     text-transform: capitalize;
+}
+
+
+/* OVERLAY & MODAL START*/
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.72);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    top: 150px;
+    left: 440px;
+    z-index; 1;
+   /* display: none;*/
+    width: 450px;
+    height: 540px;
+    background: #fff;
+    border-radius: 8px;
+    border: .5px solid #dfdfdf;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 55px;
+    color: #000;
+    transition: 0.5s;
+    display: block;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+.modal-content {
+    margin-top: 60px;
+    text-align: center;
+    align-items: center;
+    height: 90%;
+    box-sizing: border-box;
+}
+
+.emp-info {
+    margin-bottom: 35px;
+}
+
+.emp-info .md-img {
+    border-radius: 50%;
+    height: 170px;
+    width: 170px;
+    margin-bottom: 25px;
+}
+
+.emp-info .md-h2 {
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+
+.emp-info .md-email {
+    margin-bottom: 15px;
+    color: #83898d;
+}
+
+.emp-info .md-location {
+    color: #83898d;
+    text-transform: capitalize;
+}
+
+.emp-info .md-location::after {
+    content: "";
+    height: 1px;
+    width: 380px;
+    background-color: #83898d;
+    display: block;
+    margin: 40px auto;
+}
+
+.md-phone,
+.md-address,
+.md-birthday {
+    color:#83898d;
+    text-transform: capitalize;
+}
+
+.md-phone,
+.md-address {
+    margin-bottom: 25px;
 }
