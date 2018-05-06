@@ -12,14 +12,12 @@ fetchData('https://randomuser.me/api/')
 
 function fetchData(url) {
 return fetch(url)
-    .then(response => response.json())
-//    .catch(error => console.log(`It looks like we encountered an error!, ${error}`))
+        .then(response => response.json())
+        .catch(error => console.log(`It looks like we encountered an error!, ${error}`))
 }
 
 function getImage(data) {
-    const gridBox = document.querySelector('.grid-box');
-    const img = `
-    <img src="${data}" alt="" />
-   `;
-    gridBox.insertBefore(img, userInfo);
+    const gridBox = document.querySelectorAll('.grid-box')[0];
+    const img = document.getElementById('api-img');
+    img.src = data;
 }
