@@ -1,9 +1,11 @@
-const userInfo = document.querySelector('div.user-info');
+const grid = document.querySelectorAll('.grid-box');
 //--------------
 // FETCH API
 //--------------
-fetchData('https://randomuser.me/api/')
-    .then(data => getEmployeeInfo(data.results[0]))
+for (let i = 0; i < grid.length; i++) {
+    fetchData('https://randomuser.me/api/')
+    .then(data => getEmployeeInfo(data.results[0], i))
+}
 
 //--------------
 // FUNCTIONS
@@ -15,21 +17,22 @@ return fetch(url)
         .catch(error => console.log(`It looks like we encountered an error!, ${error}`))
 }
 
-function getEmployeeInfo(data) {
-    const gridBox = document.querySelectorAll('.grid-box')[0];
+function getEmployeeInfo(data, i) {
+    let gridBox = grid[i];
+
     //img info
-    const img = document.getElementById('api-img');
+    const img = gridBox.querySelector('img.api-img');
     img.src = data.picture.large;
     
     //name info
-    const empName = document.querySelector('h2.name');
+    const empName = gridBox.querySelector('h2.name');
     empName.innerHTML = `${data.name.first} ${data.name.last}`;
     
     //email info
-    const email = document.querySelector('p.email');
+    const email = gridBox.querySelector('p.email');
     email.innerHTML = data.email;
     
     //location info
-    const location = document.querySelector('p.location');
+    const location = gridBox.querySelector('p.location');
     location.innerHTML = data.location.city;
 }

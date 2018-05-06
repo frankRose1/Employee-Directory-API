@@ -29,13 +29,14 @@ div.grid-box {
     justify-content: space-around;
 }
 
-div.grid-box img#api-img {
+div.grid-box img.api-img {
     border-radius: 50%;
     display: inline-block;
     height: 120px;
     width: 120px;
     max-width: 40%;
     float: left;
+    vertical-align: middle;
 }
 
 div.grid-box div.employee-info {
@@ -43,6 +44,7 @@ div.grid-box div.employee-info {
     margin: 35px 80px 0 0;
     float: right;
     max-width: 40%;
+    vertical-align: middle;
 }
 
 div.employee-info h2.name {
