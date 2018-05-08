@@ -6,6 +6,8 @@ body {
 h1{
     margin-top: 50px;
     margin-left: 40px;
+    font-size: 30px;
+    line-height: 35px;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -21,6 +23,7 @@ div.grid {
 
 div.grid-box {
     width: 28%;
+    min-width: 300px;
     background-color: #fff;
     height: 150px;
     border-radius: 5px;
@@ -32,6 +35,9 @@ div.grid-box {
     transition: 0.5s;
     overflow: auto;
     cursor: pointer;
+    -moz-box-shadow: 0px 0px 10px #000;
+    -webkit-box-shadow: 0px 0px 10px #000;
+    box-shadow: 0px 0px 5px #000;
 }
 
 div.grid-box:hover {
@@ -70,7 +76,6 @@ div.employee-info p.location {
     text-transform: capitalize;
 }
 
-
 /* OVERLAY & MODAL START*/
 
 .overlay {
@@ -86,7 +91,7 @@ div.employee-info p.location {
 .modal {
     position: absolute;
     top: 150px;
-    left: 440px;
+    left: 460px;
     z-index; 1;
    /* display: none;*/
     width: 450px;
@@ -94,11 +99,12 @@ div.employee-info p.location {
     background: #fff;
     border-radius: 8px;
     border: .5px solid #dfdfdf;
+    display: none;
 }
 
 .close {
     position: absolute;
-    top: 5px;
+    top: -16px;
     right: 5px;
     font-size: 55px;
     color: #000;
@@ -149,7 +155,7 @@ div.employee-info p.location {
 .emp-info .md-location::after {
     content: "";
     height: 1px;
-    width: 380px;
+    width: 360px;
     background-color: #83898d;
     display: block;
     margin: 40px auto;
@@ -157,7 +163,7 @@ div.employee-info p.location {
 
 .md-phone,
 .md-address,
-.md-birthday {
+.md-dob {
     color:#83898d;
     text-transform: capitalize;
 }
