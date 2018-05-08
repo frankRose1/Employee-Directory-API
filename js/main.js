@@ -21,7 +21,7 @@ function fetchData(url) {
         .catch(error => console.log(`It looks like we encountered an error!, ${error}`))
 }
 
-//store each reponse in an array then call the function to populate the html with employee info
+//store the reponse in an array then call the function to populate the html with employee info
 function storeData(response) {
     arr.push(response);
     
@@ -73,7 +73,17 @@ function showModal(i) {
                             ${employeeData[i].location.postcode}`;
     
     const mdDOB = document.querySelector('.md-dob');
-    mdDOB.innerHTML = `Birthday: ${employeeData[i].dob}`;
+    mdDOB.innerHTML = `Birthday: ${convertDate(employeeData[i].dob)}`;
+}
+
+//this function will take the date from the JSON data and first crop it down so we only have the date
+//then it will convert the date to a mm/dd/yy format by sliceing the string
+function convertDate(date) {
+    const shortDate = date.substr(0, 10);
+    const mm = shortDate.slice(5, 7);
+    const dd = shortDate.slice(8, 10);
+    const yy = shortDate.slice(2, 4);  
+    return `${mm}/${dd}/${yy}`; // return a template literal that will be input in to the modal html 
 }
 
 //--------------
