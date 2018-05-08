@@ -9,7 +9,6 @@ let arr = [];
 //--------------
 // FETCH API
 //--------------
-
 fetchData('https://randomuser.me/api/?results=12&nat=us')
     .then(data => storeData(data))
 
@@ -25,8 +24,9 @@ function fetchData(url) {
 //store each reponse in an array then call the function to populate the html with employee info
 function storeData(response) {
     arr.push(response);
-    $.each(arr[0].results, function (i, employee) {
-        getEmployeeInfo(employee, grid[i]);
+    
+    arr[0].results.forEach( function(employee, index) {
+        getEmployeeInfo(employee, grid[index]);
     });
 }
 
@@ -79,14 +79,12 @@ function showModal(i) {
 //--------------
 // EVENT HANDLERS
 //--------------
-gridContainer.addEventListener('click', (e) => {
-    for (let i = 0; i < grid.length; i++) {
-        gridContainer.children[i].onclick = function () {
-            console.log(i);
-            showModal(i);
-        }; 
-    } //end for loop
-});
+for (let i = 0; i < grid.length; i++) {
+    gridContainer.children[i].onclick = function () {
+        console.log(i); //for test purposes
+        showModal(i);
+    };
+}
 
 body.addEventListener('click', (e) => {
     if (e.target == overlay || e.target == closeIcon) {
