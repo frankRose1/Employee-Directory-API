@@ -30,6 +30,7 @@ function storeData(response) {
     });
 }
 
+//fills the 12 grids with employee info from the API response
 function getEmployeeInfo(data, gridBox) {
     let employeeGrid = gridBox;
     //img info
@@ -46,6 +47,7 @@ function getEmployeeInfo(data, gridBox) {
     location.innerHTML = data.location.city;
 }
 
+//shows the modal with the targeted employee's information
 function showModal(i) {
     overlay.style.display = 'block';
     modal.style.display = 'block';
@@ -69,7 +71,7 @@ function showModal(i) {
     const mdAddress = document.querySelector('.md-address');
     mdAddress.innerHTML =  `${employeeData[i].location.street} 
                             ${employeeData[i].location.city}, 
-                            ${employeeData[i].location.state}
+                            ${abbrState(employeeData[i].location.state, 'abbr')}
                             ${employeeData[i].location.postcode}`;
     
     const mdDOB = document.querySelector('.md-dob');
@@ -77,7 +79,7 @@ function showModal(i) {
 }
 
 //this function will take the date from the JSON data and first crop it down so we only have the date
-//then it will convert the date to a mm/dd/yy format by sliceing the string
+//then it will convert the date to a mm/dd/yy format by slicing the string
 function convertDate(date) {
     const shortDate = date.substr(0, 10);
     const mm = shortDate.slice(5, 7);
@@ -91,7 +93,6 @@ function convertDate(date) {
 //--------------
 for (let i = 0; i < grid.length; i++) {
     gridContainer.children[i].onclick = function () {
-        console.log(i); //for test purposes
         showModal(i);
     };
 }

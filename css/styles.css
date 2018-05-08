@@ -173,3 +173,33 @@ div.employee-info p.location {
 .md-address {
     margin-bottom: 25px;
 }
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 1055px) {
+    div.grid-box {
+        width: 40%;
+    }
+}
+
+@media (max-width: 770px) {
+    div.grid-box {
+        width: 80%;
+    }
+    
+        
+    div.employee-info h2.name {
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    div.employee-info p.email {
+       font-size: 20px;
+       line-height: 25px;
+    }
+
+    div.employee-info p.location {
+        font-size: 20px;
+       line-height: 25px;
+    }
+}
