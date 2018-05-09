@@ -91,7 +91,7 @@ div.employee-info p.location {
 .modal {
     position: fixed;
     margin: 0 auto;
-    top: 200px;
+    top: 100px;
     right: 0;
     left: 0;
     z-index; 3;
