@@ -9,25 +9,30 @@ let arr = [];
 //--------------
 // FETCH API
 //--------------
-fetchData('https://randomuser.me/api/?results=12&nat=us')
+fetch('https://randomuser.me/api/?results=12&nat=us')
+    .then(handleErrors)
+    .then(res => res.json())
     .then(data => storeData(data))
+    .catch(error => console.log(`It looks like we encountered an error!, ${error}`))
 
 //--------------
 // FUNCTIONS
 //--------------
-function fetchData(url) {
-    return fetch(url)
-        .then(res => res.json())
-        .catch(error => console.log(`It looks like we encountered an error!, ${error}`))
-}
 
 //store the reponse in an array then call the function to populate the html with employee info
-function storeData(response) {
-    arr.push(response);
+function storeData(data) {
+    arr.push(data);
     
     arr[0].results.forEach( function(employee, index) {
         getEmployeeInfo(employee, grid[index]);
     });
+}
+
+function handleErrors(request){
+    if(!request.ok) {
+        throw Error(request.status);
+    }
+    return request;
 }
 
 //fills the 12 grids with employee info from the API response
