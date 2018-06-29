@@ -90,11 +90,10 @@ div.employee-info p.location {
 
 .modal {
     position: fixed;
-    margin: 0 auto;
-    top: 100px;
-    right: 0;
-    left: 0;
-    z-index; 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
     width: 450px;
     height: 540px;
     background: #fff;
@@ -172,6 +171,28 @@ div.employee-info p.location {
 .md-phone,
 .md-address {
     margin-bottom: 25px;
+}
+
+.left-arr, .right-arr {
+    font-size: 30px;
+    cursor: pointer;
+    color: #83898d;
+    transition: color 0.5s ease-in-out;
+    position: absolute;
+}
+
+.left-arr:hover, .right-arr:hover {
+    color: rgb(155, 214, 242);
+}
+
+.left-arr {
+    bottom: 10px;
+    left: 10px;
+}
+
+.right-arr {
+    bottom: 10px;
+    right: 10px;
 }
 
 /*MEDIA QUERIES*/

@@ -4,7 +4,9 @@ const grid = document.querySelectorAll('.grid-box');
 const overlay = document.querySelector('.overlay');
 const modal = document.getElementById('js-modal');
 const closeIcon = document.querySelector('.close');
-let arr = [];
+const leftArrow = document.querySelector('.left-arr');
+const rightArrow = document.querySelector('.right-arr');
+const arr = [];
 
 //--------------
 // FETCH API
@@ -56,6 +58,7 @@ function getEmployeeInfo(data, gridBox) {
 function showModal(i) {
     overlay.style.display = 'block';
     modal.style.display = 'block';
+    modal.dataset.idx = i;
     const employeeData = arr[0].results;
     
     const mdImg = document.querySelector('img.md-img');
@@ -80,13 +83,12 @@ function showModal(i) {
                             ${employeeData[i].location.postcode}`;
     
     const mdDOB = document.querySelector('.md-dob');
-    mdDOB.innerHTML = `Birthday: ${convertDate(employeeData[i].dob)}`;
+    // mdDOB.innerHTML = `Birthday: ${convertDate(employeeData[i].dob)}`;
 }
 
-//this function will take the date from the JSON data and first crop it down so we only have the date
-//then it will convert the date to a mm/dd/yy format by slicing the string
+//convert the date to a mm/dd/yy format 
 function convertDate(date) {
-    const shortDate = date.substr(0, 10);
+    const shortDate = date.substring(0, 10);
     const mm = shortDate.slice(5, 7);
     const dd = shortDate.slice(8, 10);
     const yy = shortDate.slice(2, 4);  
@@ -97,10 +99,10 @@ function convertDate(date) {
 // EVENT HANDLERS
 //--------------
 for (let i = 0; i < grid.length; i++) {
-    gridContainer.children[i].onclick = function () {
-        showModal(i);
-    };
-}
+        gridContainer.children[i].onclick = function () {
+            showModal(i);
+        };
+    }
 
 body.addEventListener('click', (e) => {
     if (e.target == overlay || e.target == closeIcon) {
@@ -108,3 +110,21 @@ body.addEventListener('click', (e) => {
         modal.style.display = 'none';
     }
 });
+
+//to cycle through the modal windows
+function navigateModal(e){
+    e.stopPropagation();
+    //find the modal with the class of current
+    const current = this.parentElement;
+    //get the index
+    const idx = parseInt(current.dataset.idx);
+    console.log(idx);
+    if (this === leftArrow) {
+        showModal(idx - 1);
+    } else if (this === rightArrow) {
+        showModal(idx + 1);
+    }
+}
+
+leftArrow.addEventListener('click', navigateModal);
+rightArrow.addEventListener('click', navigateModal);
