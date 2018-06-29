@@ -4,8 +4,8 @@ const grid = document.querySelectorAll('.grid-box');
 const overlay = document.querySelector('.overlay');
 const modal = document.getElementById('js-modal');
 const closeIcon = document.querySelector('.close');
-const leftArrow = document.querySelector('.left-arr');
-const rightArrow = document.querySelector('.right-arr');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 const arr = [];
 
 //--------------
@@ -84,6 +84,7 @@ function showModal(i) {
     
     const mdDOB = document.querySelector('.md-dob');
     // mdDOB.innerHTML = `Birthday: ${convertDate(employeeData[i].dob)}`;
+    document.querySelector('.results').innerText = `${i + 1} of 12 results.`;
 }
 
 //convert the date to a mm/dd/yy format 
@@ -93,6 +94,28 @@ function convertDate(date) {
     const dd = shortDate.slice(8, 10);
     const yy = shortDate.slice(2, 4);  
     return `${mm}/${dd}/${yy}`; // return a template literal that will be input in to the modal html 
+}
+
+//to cycle through the modal windows
+function navigateModal(e){
+    e.stopPropagation();
+    //find the user that is currently being shown(get the index)
+    const current = this.parentElement.parentElement.parentElement;
+    const idx = parseInt(current.dataset.idx);
+    //if on last user jump to first and vice versa
+    if (idx === 11 && this === next) {
+        showModal(0);
+        return; // exit
+    } else if (idx === 0 && this === prev) {
+        showModal(11);
+        return; //exit!
+    }
+    //cycle through the users
+    if (this === prev) {
+        showModal(idx - 1);
+    } else if (this === next) {
+        showModal(idx + 1);
+    }
 }
 
 //--------------
@@ -111,20 +134,5 @@ body.addEventListener('click', (e) => {
     }
 });
 
-//to cycle through the modal windows
-function navigateModal(e){
-    e.stopPropagation();
-    //find the modal with the class of current
-    const current = this.parentElement;
-    //get the index
-    const idx = parseInt(current.dataset.idx);
-    console.log(idx);
-    if (this === leftArrow) {
-        showModal(idx - 1);
-    } else if (this === rightArrow) {
-        showModal(idx + 1);
-    }
-}
-
-leftArrow.addEventListener('click', navigateModal);
-rightArrow.addEventListener('click', navigateModal);
+prev.addEventListener('click', navigateModal);
+next.addEventListener('click', navigateModal);

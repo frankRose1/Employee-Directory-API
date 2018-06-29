@@ -173,18 +173,23 @@ div.employee-info p.location {
     margin-bottom: 25px;
 }
 
-.left-arr, .right-arr {
+.modal-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.prev, .next {
     font-size: 30px;
     cursor: pointer;
     color: #83898d;
     transition: color 0.5s ease-in-out;
-    position: absolute;
+    /* position: absolute; */
 }
 
-.left-arr:hover, .right-arr:hover {
+.prev:hover, .next:hover {
     color: rgb(155, 214, 242);
 }
-
+/* 
 .left-arr {
     bottom: 10px;
     left: 10px;
@@ -193,7 +198,7 @@ div.employee-info p.location {
 .right-arr {
     bottom: 10px;
     right: 10px;
-}
+} */
 
 /*MEDIA QUERIES*/
 
