@@ -54,7 +54,7 @@ div.grid-box img.api-img {
     vertical-align: middle;
 }
 
-div.grid-box div.employee-info {
+.employee-info {
     display: inline-block;
     margin: 35px 80px 0 0;
     float: right;
@@ -62,17 +62,17 @@ div.grid-box div.employee-info {
     vertical-align: middle;
 }
 
-div.employee-info h2.name {
+.name {
     font-weight: 700;
     margin-bottom: 10px;
     text-transform: capitalize;
 }
 
-div.employee-info p.email {
+.email {
     margin-bottom: 10px;
 }
 
-div.employee-info p.location {
+.location {
     text-transform: capitalize;
 }
 
@@ -183,23 +183,31 @@ div.employee-info p.location {
     cursor: pointer;
     color: #83898d;
     transition: color 0.5s ease-in-out;
-    /* position: absolute; */
 }
 
 .prev:hover, .next:hover {
     color: rgb(155, 214, 242);
 }
-/* 
-.left-arr {
-    bottom: 10px;
-    left: 10px;
+
+/* errors */
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 200px auto;
+    padding: 25px;
+    color: #83898d;
 }
 
-.right-arr {
-    bottom: 10px;
-    right: 10px;
-} */
+.error h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
 
+.error i {
+    font-size: 70px;
+    margin-right: 20px;
+}
 /*MEDIA QUERIES*/
 
 @media (max-width: 1055px) {
@@ -213,6 +221,9 @@ div.employee-info p.location {
         width: 80%;
     }
     
+    .error h2 {
+        font-size: 35px;
+    }
         
     div.employee-info h2.name {
         font-size: 30px;
@@ -228,4 +239,35 @@ div.employee-info p.location {
         font-size: 20px;
        line-height: 25px;
     }
+}
+
+@media (max-width: 600px) {
+    .error {
+        flex-direction: column;
+    }
+
+    .error i {
+        margin: 0 0 25px 0;
+    }
+
+    .error h2 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 550px) {
+  div.grid-box{
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+  }
+ .employee-info {
+     max-width: 100%;
+     margin: 20px 0 0 0;
+     float: none;
+ }
+  .name, .email, .location {
+      text-align: center;
+      width: 100%;
+  }
 }

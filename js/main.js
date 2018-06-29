@@ -12,10 +12,9 @@ const arr = [];
 // FETCH API
 //--------------
 fetch('https://randomuser.me/api/?results=12&nat=us')
-    .then(handleErrors)
     .then(res => res.json())
     .then(data => storeData(data))
-    .catch(error => console.log(`It looks like we encountered an error!, ${error}`))
+    .catch(err => handleErrors);
 
 //--------------
 // FUNCTIONS
@@ -30,14 +29,17 @@ function storeData(data) {
     });
 }
 
-function handleErrors(request){
-    if(!request.ok) {
-        throw Error(request.status);
-    }
-    return request;
+function handleErrors(){
+    const html = `
+        <div class="error">
+            <i class="fas fa-exclamation-circle"></i>
+            <h2>Oops, we encountered an error! Please try again later.</h2>
+        </div>
+    `;
+    gridContainer.innerHTML = html;
 }
 
-//fills the 12 grids with employee info from the API response
+//fills the 12 grid items with employee info from the API response
 function getEmployeeInfo(data, gridBox) {
     let employeeGrid = gridBox;
     //img info
